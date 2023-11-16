@@ -30,13 +30,13 @@ def profile(func):
         """
 
         start = datetime.now()
-        result = func(*args, **kwargs)
+        func(*args, **kwargs)
         end = datetime.now()
 
         elapsed_time = (end - start).total_seconds()
         print(f"Function {func.__name__} took {elapsed_time} seconds")
 
-        return result, elapsed_time
+        return elapsed_time
 
     return wrapper
 
@@ -51,9 +51,9 @@ def run_profiler(ITERATIONS):
     for _ in range(ITERATIONS):
         x, y = random.randint(1, 10), random.randint(1, 10)
 
-        _, fast_time = profile(fast_function)(x, y)
-        _, slower_time = profile(slower_function)(x, y)
-        _, slowest_time = profile(slowest_function)(x, y)
+        fast_time = profile(fast_function)(x, y)
+        slower_time = profile(slower_function)(x, y)
+        slowest_time = profile(slowest_function)(x, y)
 
         results.append({"Function": "fast_function", "Time": fast_time})
         results.append({"Function": "slower_function", "Time": slower_time})
