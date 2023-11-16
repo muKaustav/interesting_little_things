@@ -34,6 +34,10 @@ def profile(func):
 
 
 def run_profiler(ITERATIONS):
+    """
+    Run the profiler for the given number of iterations, and save the results to a CSV file
+    """
+
     results = []
 
     for _ in range(ITERATIONS):
