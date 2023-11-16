@@ -20,7 +20,15 @@ def slowest_function(x: int, y: int) -> int:
 
 
 def profile(func):
+    """
+    Decorator to profile a function
+    """
+
     def wrapper(*args, **kwargs):
+        """
+        Wrapper function to profile a function
+        """
+
         start = datetime.now()
         result = func(*args, **kwargs)
         end = datetime.now()
