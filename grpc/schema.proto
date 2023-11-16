@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+// The VideoTask message definition.
+message VideoTask {
+    string video_url = 1;
+    string watermark_url = 2;
+    int32 x_offset = 3;
+    int32 y_offset = 4;
+    string email = 5;
+    int32 current_epoch = 6;
+}
+
+// The response message definition.
+message Response {
+    string unique_id = 1;
+    string status = 2;
+}
+
+// The task service definition.
+service TaskService {
+    // Sends a task
+    rpc unary_task(VideoTask) returns (Response) {};
+    rpc bidirectional_task(stream VideoTask) returns (stream Response) {};
+}
